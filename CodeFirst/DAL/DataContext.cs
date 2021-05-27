@@ -10,7 +10,11 @@ namespace CodeFirst.DAL
 {
     public class EntertainmentDbContext : DbContext
     {
-        public EntertainmentDbContext() : base("name=DataBaseString") { }
+          
+        public EntertainmentDbContext() : base()
+        {
+
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

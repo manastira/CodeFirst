@@ -1,4 +1,5 @@
 ﻿using CodeFirst.Model;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -113,9 +114,19 @@ namespace CodeFirst.DAL
             context.Ratings.AddRange(ratings);
             base.Seed(context);
         }
+
+        
         public override void InitializeDatabase(EntertainmentDbContext context)
         {
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+           .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+           .AddJsonFile("appsettings.json")
+           .Build();
+
+           
             base.InitializeDatabase(context);
         }
+
+      
     }
 }
