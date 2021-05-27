@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CodeFirst.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -32,7 +32,7 @@ namespace CodeFirst.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);
+           // HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -42,6 +42,13 @@ namespace CodeFirst.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("GetData")]
+        public string GetData()
+        {
+            return "ok";
         }
     }
 }
