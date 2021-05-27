@@ -1,20 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace CodeFirst.Model
 {
-    public class EntertainmentDbContext : DbContext
-    {
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=entertainment.db");
-        public DbSet<Production> Productions { get; set; }
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<Series> Series { get; set; }
-        public DbSet<Rating> Ratings { get; set; }
-        public DbSet<Character> Characters { get; set; }
-        public DbSet<Actor> Actors { get; set; }
-    }
+ 
     public abstract class Production
     {
         public int Id { get; set; }
